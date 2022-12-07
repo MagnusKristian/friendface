@@ -1,25 +1,56 @@
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./Pages/Layout";
+import Home from "./Pages/Home";
+import Blogs from "./Pages/Blogs";
+import Contact from "./Pages/Contact";
+import NoPage from "./Pages/NoPage";
+import Login from "./Pages/Login/Login.js";
+
+
 import logo from './logo.svg';
 import './App.css';
-import { Login } from './login/login.js';
-import {NavBar } from "./NavBar/NavBar"
+// import { Login } from './Components/login/login.js';
+import {NavBar } from "./Components/NavBar/NavBar"
 
 
 function App() {
   return (
-    <>
-      <NavBar/>
-      <div className="App">
-        <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="*" element={<NoPage />} />
+           {/* Dont change the three above*/ }
+          
+           <Route path="login" element={<Login />} />
 
-          <br/>
-          <br/>
-          <br/>
-          <Login/>
-        </header>
-      </div>
-    </>
+
+          <Route path="blogs" element={<Blogs />} />
+          <Route path="contact" element={<Contact />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+    
   );
 }
 
 export default App;
+
+
+//org:
+/*
+<>
+      <NavBar/>
+      <div className="App">
+        <header className="App-header">
+        {/* <img src={logo} className="App-logo" alt="logo" /> *///}
+
+//         <br/>
+//         <br/>
+//         <br/>
+//         <Login/>
+//       </header>
+//     </div>
+//   </>
+// */
