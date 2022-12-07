@@ -1,11 +1,7 @@
-import { Link, Outlet } from "react-router-dom";
-import logo from '../logo.svg';
-import { NavBar } from "../Components/NavBar/NavBar";
-
-const Layout = () => {
+const Search = () => {
   return (
     <>
-    <NavBar/>
+      <h1>Search</h1>
       <nav style={{fontSize:"xx-large", float: "left"}}>
         <ul>
           <li>
@@ -31,18 +27,8 @@ const Layout = () => {
           </li>
         </ul>
       </nav>
-      
-      <div className="App">
-        <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" style={{width:"10%"}}/>
-        <br/>
-      
-      <Outlet />
-
-      </header>
-    </div>
     </>
-  )
+  );
 };
 
-export default Layout;
+export default Search;

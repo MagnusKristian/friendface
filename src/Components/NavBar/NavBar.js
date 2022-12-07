@@ -1,5 +1,6 @@
 import "./NavBarCss.css";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
+// import { Outlet } from "react-router-dom";
 
 // import { useState } from "react";
 
@@ -20,11 +21,25 @@ export const NavBar = () => {
     }
   }
 
+  /*
+  function Greeting(props) {
+  const isLoggedIn = props.isLoggedIn;
+  if (isLoggedIn) {
+    return <UserGreeting />;
+  }
+  return <GuestGreeting />;
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root')); 
+// Try changing to isLoggedIn={true}:
+root.render(<Greeting isLoggedIn={false} />);
+*/
   return (
     <>
       <div className="topnav" id="myTopnav">
         <div className="navPages">
         <Link to="/">Home</Link>
+        {/*if logged in view "log out" + onclick log out.*/}
         <Link to="/login">Login</Link>
         <Link to="/profile">Profile</Link>
         <Link to="/search">Search</Link>

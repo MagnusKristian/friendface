@@ -1,17 +1,19 @@
-import ReactDOM from "react-dom/client";
+// import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./Pages/Layout";
-import Home from "./Pages/Home";
-import Blogs from "./Pages/Blogs";
-import Contact from "./Pages/Contact";
-import NoPage from "./Pages/NoPage";
+import Layout from "./Pages/Layout/Layout";
+import Home from "./Pages/Home/Home";
+import NoPage from "./Pages/NoPage/NoPage";
 import Login from "./Pages/Login/Login.js";
+import Profile from "./Pages/Profile/Profile.js";
+import Search from "./Pages/Search/Search.js";
+import Settings from "./Pages/Settings/Settings.js";
 
 
-import logo from './logo.svg';
+
+// import logo from './logo.svg';
 import './App.css';
 // import { Login } from './Components/login/login.js';
-import {NavBar } from "./Components/NavBar/NavBar"
+// import {NavBar } from "./Components/NavBar/NavBar"
 
 
 function App() {
@@ -22,12 +24,10 @@ function App() {
           <Route index element={<Home />} />
           <Route path="*" element={<NoPage />} />
            {/* Dont change the three above*/ }
-          
            <Route path="login" element={<Login />} />
-
-
-          <Route path="blogs" element={<Blogs />} />
-          <Route path="contact" element={<Contact />} />
+           <Route path="profile" element={<Profile />} />
+           <Route path="search" element={<Search />} />
+           <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>
     </BrowserRouter>
