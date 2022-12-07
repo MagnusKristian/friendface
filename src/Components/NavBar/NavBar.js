@@ -1,4 +1,6 @@
 import "./NavBarCss.css";
+import { Link, Outlet } from "react-router-dom";
+
 // import { useState } from "react";
 
 export const NavBar = () => {
@@ -22,16 +24,27 @@ export const NavBar = () => {
     <>
       <div className="topnav" id="myTopnav">
         <div className="navPages">
-        <a href="#home" className="active">Home</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
+        <Link to="/">Home</Link>
+        <Link to="/login">Login</Link>
+        <Link to="/profile">Profile</Link>
+        <Link to="/search">Search</Link>
+        <Link to="/settings">Settings</Link>
+        {/* <Link to="/blogs">Blogs</Link>
+        <Link to="/contact">Contact</Link> */}
+
+        {/* <a href="#home" className="active">Home#</a>
+        <a href="#news">News#</a>
+        <a href="#contact">Contact#</a>
+        <a href="#about">About#</a> */}
         <a href={{javascript:void(0)}} className="icon" onClick={myFunction}>
           ☰
         </a>
         </div>
-        <h1 className="mainLogo">{"{FriendFace? OnceOver?}"}</h1>
+        <h1 className="mainLogo">{"{FriendFace?}"}</h1>
+        {/* <h1 className="mainLogo">{"{OnceOver?}"}</h1> */}
       </div>
+      {/* <Outlet/> */}
+
     </>
     
   )

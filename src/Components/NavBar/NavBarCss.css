@@ -34,57 +34,19 @@
   display: none;
   background-color: #333;
   float: right;
-  
-
 }
 
 .mainLogo{
+  /* color: white; */
+  font-family: 'Courier New', Courier, monospace;
   background-color: dodgerblue;
-  /* font-size: 100%; */
-  /* margin: auto; */
   font-size:xx-large;
-
   position: absolute;
-  /* top: 50%; */
   left: 50%;
   transform: translate( -50%);
-  /* position: fixed; */
-  /* height: auto; */
-  /* display: flex; */
-/* font-size: 1vmax; */
-/* height: fit-content; */
-/* height: auto; */
-  /* width: 10vw; */
-  /* width: 20%; */
-  /* width: fit-content; */
-  /* height: auto; */
-  /* font-size: 1em; */
-  /* font-size: 1.5vw; */
-  /* position:fixed; */
-
-  /* size: 10vw; */
-  /* float: left; */
-
-  /* margin: auto; */
-  /* align-self: center; */
-
-  /* position: absolute; */
-
-}
-.navPages{
-  /* position:fixed; */
-  /* float: left; */
-  /* margin: auto; */
-
 }
 
-/* .fa-bars:before{content:"\f0c9"} */
-/* .fa-list-ul:before{content:"\f0ca"} */
-/* .fa{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale} */
-
-@media screen and (max-width: 600px) {
-  /* .mainLogo{display: none;} */
-  .mainLogo{font-size: large}
+@media screen and (max-width: 1030px) {
   .topnav a:not(:first-child) {display: none;}
   /* .navPages a:first-child {display: none;} */
 
@@ -97,9 +59,6 @@
     right: 0;
     top: 0;
   }
-}
-
-@media screen and (max-width: 600px) {
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
@@ -113,21 +72,6 @@
   }
 }
 
-
-@media screen and (max-width: 1000px) {
-  /* .mainLogo{display: none;} */
-  .mainLogo{font-size: large}
-  .topnav a:not(:first-child) {display: none;}
-  /* .navPages a:first-child {display: none;} */
-
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-  .topnav .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  
+@media screen and (max-width: 400px) {
+  .mainLogo{font-size: medium}
 }

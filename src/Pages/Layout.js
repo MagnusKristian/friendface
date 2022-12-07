@@ -9,40 +9,38 @@ const Layout = () => {
       <nav style={{fontSize:"xx-large", float: "left"}}>
         <ul>
           <li>
-            <Link to="/">Home</Link>
-          </li>
-          <br/>
-          <li>
-            <Link to="/login">Login</Link>
+            1
           </li>
           <li>
-            <Link to="/profile">Profile</Link>
+            2
           </li>
           <li>
-            <Link to="/search">Search</Link>
+            3
           </li>
           <li>
-            <Link to="/settings">Settings</Link>
-          </li>
-
-
-          <li>
-            <Link to="/blogs">Blogs</Link>
+            4
           </li>
           <li>
-            <Link to="/contact">Contact</Link>
+            4
+          </li>
+          <li>
+            5
+          </li>
+          <li>
+            6
           </li>
         </ul>
       </nav>
+      
       <div className="App">
         <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={logo} className="App-logo" alt="logo" style={{width:"10%"}}/>
         <br/>
-        <br/>
-        <br/>
+      
+      <Outlet />
+
       </header>
     </div>
-      <Outlet />
     </>
   )
 };
