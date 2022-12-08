@@ -7,13 +7,15 @@ const Layout = () => {
   return (
     <>
     <NavBar/>
-      <div className="App">
+      <div className="App main">
         <header className="App-header">
-        <Outlet />
       </header>
+      <Outlet />
 
     </div>
+    <div className="main">
 
+    </div>
     </>
   )
 };

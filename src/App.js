@@ -7,17 +7,21 @@ import Login from "./Pages/Login/Login.js";
 import Profile from "./Pages/Profile/Profile.js";
 import Search from "./Pages/Search/Search.js";
 import Settings from "./Pages/Settings/Settings.js";
+import Extra from "./Pages/Extra/Extra";
 
 
 
 // import logo from './logo.svg';
+
 import './App.css';
+
 // import { Login } from './Components/login/login.js';
 // import {NavBar } from "./Components/NavBar/NavBar"
 
 
 function App() {
   return (
+  <>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -28,10 +32,11 @@ function App() {
            <Route path="profile" element={<Profile />} />
            <Route path="search" element={<Search />} />
            <Route path="settings" element={<Settings />} />
+           <Route path="extra" element={<Extra />} />
         </Route>
       </Routes>
     </BrowserRouter>
-    
+  </>  
   );
 }
 

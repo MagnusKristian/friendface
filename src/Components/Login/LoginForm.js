@@ -44,7 +44,7 @@ export const LoginForm = () => {
 
   return (
     <>
-      <div className="LoginPanel" style={{border: '1px solid rgba(0, 0, 0)', height:"33vh", width: "33vw"}}>
+      <div className="LoginPanel" style={{border: '1px solid rgba(0, 0, 0)', height:"33vh", width: "33vw",textAlign: "center"}}>
         <div className="LoginForm" style={{border: '1px solid rgba(0, 0, 0)'}}>
           <form onSubmit={handleSubmit}>
             <label >Username:</label>
