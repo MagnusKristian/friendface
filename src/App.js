@@ -9,11 +9,16 @@ import Search from "./Pages/Search/Search.js";
 import Settings from "./Pages/Settings/Settings.js";
 import Extra from "./Pages/Extra/Extra";
 
+// import React from "react";
+// import { ProvideAuth } from "./use-auth.js";
+
+
 
 
 // import logo from './logo.svg';
 
 import './App.css';
+import PostFeedPage from "./Pages/PostFeedPage/PostFeedPage";
 
 // import { Login } from './Components/login/login.js';
 // import {NavBar } from "./Components/NavBar/NavBar"
@@ -33,6 +38,7 @@ function App() {
            <Route path="search" element={<Search />} />
            <Route path="settings" element={<Settings />} />
            <Route path="extra" element={<Extra />} />
+           <Route path="postfeedpage" element={<PostFeedPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -13,6 +13,7 @@ class Search extends Component {
   };
 
   loadData = () => {
+    console.log("loading data");
     const { per, page, data } = this.state;
     const endpoint = `https://randomuser.me/api/?nat=us&results=${per}&page=${page}`;
     fetch(endpoint)
@@ -32,8 +33,8 @@ class Search extends Component {
         page: prevState.page + 1,
         scrolling: true
       }),
-      this.loadData
     );
+    this.loadData();
   };
 
   componentDidMount() {
@@ -44,7 +45,9 @@ class Search extends Component {
     return (
       <div>
         
-          <input type="text" id="fname" name="fname"/><button onClick={e => {
+          <input type="text" id="fname" name="fname"/>
+          <button onClick={e => {
+            console.log("set state");
             this.state.data = [];
             this.loadData();
           }}>Search</button>
