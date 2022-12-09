@@ -47,9 +47,14 @@ export const LoginForm = () => {
       <div className="LoginPanel" style={{border: '1px solid rgba(0, 0, 0)', height:"33vh", width: "33vw",textAlign: "center"}}>
         <div className="LoginForm" style={{border: '1px solid rgba(0, 0, 0)'}}>
           <form onSubmit={handleSubmit}>
+          <br/>
+          <br/>
+
             <label >Username:</label>
             <div className="showUsernameDiv" style={{fontSize:"large"}}>{username} </div>
             <input type="text" id="username" name="username" placeholder="Enter username here" onChange={handleChange}/>
+            <br/>
+            <br/>
             <br/>
 
             <label >Password:</label>
@@ -57,10 +62,14 @@ export const LoginForm = () => {
             <input type="password" id="password" name="password" placeholder="Enter password here" onChange={handleChange}/>
             <br/>
             <input type="submit" value="Submit"/>
+            <br/>
+            <br/>
+            <br/>
+
           </form> 
 
         </div>
-        <div style={{display:"flex", justifyContent: "space-evenly"}}>
+        {/* <div style={{display:"flex", justifyContent: "space-evenly"}}>
           <p>Count1: {count1}</p>
           <p>Count2: {count2}</p>
         </div>
@@ -69,7 +78,7 @@ export const LoginForm = () => {
         <div style={{display:"flex", justifyContent: "space-evenly"}}>
           <button onClick={signIn}>sign in</button>
           <button onClick={signUp}>sign up</button>
-        </div>
+        </div> */}
         
       </div>
     </>
