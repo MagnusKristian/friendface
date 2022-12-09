@@ -24,7 +24,7 @@ const Profile = () => {
         </div>
       </div>
       <hr className="m-0"/>
-      <ul className="nav nav-tabs tabs-alt justify-content-center">
+      <ul className="nav-tabs tabs-alt justify-content-center">
         <li className="nav-item">
           <a className="nav-link py-4 active" href="#">Posts</a>
         </li>

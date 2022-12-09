@@ -9,6 +9,7 @@ body{
  }
  
  .panel {
+  text-align: justify;
   /* margin-top: 5em; */
   margin-left: 5em;
   margin-right: 5em;
@@ -791,3 +792,21 @@ body{
      color: #696969;
      line-height: 26px;
  }
+
+
+
+
+
+
+
+
+
+ .form-control {
+  height: auto;
+  width: 90%;
+  padding: 13px 20px 14px;
+  border-width: 0;
+}
+.nav {
+  display: flex;
+}

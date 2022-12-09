@@ -42,7 +42,7 @@ import PostFeedPage from "./Pages/PostFeedPage/PostFeedPage";
 
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const toggleLogIn = () => { 
     console.log("toggle");
