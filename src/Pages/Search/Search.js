@@ -25,6 +25,26 @@ class Search extends Component {
           total_pages: json.info.results
         });
       });
+    console.log(this.state.data);
+
+  };
+
+
+  loadData2 = () => {
+    console.log("loading data2");
+    const { per, page, data } = this.state;
+    const endpoint = `https://randomuser.me/api/?nat=us&results=${per}&page=${page}`;
+    fetch(endpoint)
+      .then(response => response.json())
+      .then(json => {
+        this.setState({
+          data: [json.results],
+          scrolling: false,
+          total_pages: json.info.results
+        });
+      });
+    console.log(this.state.data);
+
   };
 
   loadMore = () => {
@@ -41,23 +61,59 @@ class Search extends Component {
     this.loadData();
   }
 
+  clearData= () => {
+    console.log("clear data");
+    console.log(this.state.data);
+
+    this.setState(prevState => ({
+      data: {},
+      per: 9,
+      page: 1,
+      total_pages: null
+      }));
+      this.loadData();
+    console.log(this.state.data);
+
+     };
+
+  // prevState => ({
+  //   page: prevState.page + 1,
+  //   scrolling: true
+  // }),
+
+  // clearData= () => {
+  //   this.setState({
+  //     data: [{}]
+  //   });
+  //   console.log("clear data/state");
+  //   this.loadData();
+  // };
+
   render() {
     return (
       <div>
-        
+
           <input type="text" id="fname" name="fname"/>
           <button onClick={e => {
             console.log("set state");
+            // this.clearData();
+            // this.clearData();
+            // this.setState();
+            // this.setState({data: [{}]});
+
+            // this.clearData();
             this.state.data = [];
             this.loadData();
+
+            // this.render();
           }}>Search</button>
-          
+
         <div >
           <ul>
           {this.state.data.map(data => (
             <li key={data.id.value} style={{padding:"1em"}}>
               <div key={data.id.value}>
-              
+
                 <div style={{  alignItems: "center",display:"flex", borderRadius:"10px", border:"1px solid black",justifyContent: "space-between"}}>
                   <div >
                     <img
@@ -80,11 +136,11 @@ class Search extends Component {
                     <span >{data.phone}</span>
                   </p>
                 </div>
-              
+
             </div>
             </li>))}
           </ul>
-          
+
         </div>
         <button
           onClick={e => {
@@ -139,7 +195,7 @@ export default Search;
 //     );
 //   };
 
-  
+
 
 //       console.log("hmmm");
 
@@ -147,22 +203,22 @@ export default Search;
 //     const LoadData = () => {
 //       const { per, page, data } = myState;
 //       console.log("json.results");
-    
+
 //           const endpoint = `https://randomuser.me/api/?nat=us&results=${per}&page=${page}`;
 //           fetch(endpoint)
 //             .then(response => response.json())
 //             .then(json => {
 //           console.log(json.results);
 //           console.log("json.results");
-    
+
 //               mySetState({
 //                 data: [...data, ...json.results],
 //                 scrolling: false,
 //                 total_pages: json.info.results
 //               });
-              
+
 //             });
-    
+
 //           }
 //     LoadData();
 //   },[]);
