@@ -6,7 +6,7 @@ import { useState} from 'react';
 
 function Search1() {
   const [count, setCount] = useState(0);
-  const [data, setData] = useState([{"gender":"male","name":{"title":"Mr","first":"Mason","last":"Walker"},"location":{"street":{"number":7436,"name":"Woodland St"},"city":"Los Lunas","state":"South Carolina","country":"United States","postcode":28568,"coordinates":{"latitude":"16.1075","longitude":"-111.5074"},"timezone":{"offset":"+11:00","description":"Magadan, Solomon Islands, New Caledonia"}},"email":"mason.walker@example.com","login":{"uuid":"aefbf8c3-279a-4998-81ff-278dbb702758","username":"yellowzebra256","password":"aaron","salt":"lDJNMMIa","md5":"825b151513e0a1b4784e34fdb34be515","sha1":"85305bc0e9574b4f454d2501c8a9fba54967404d","sha256":"b41a7aa58b9327a7fba1c8569c169f9ffbbb9dedf549609ed5c7570efbb33502"},"dob":{"date":"1970-04-11T07:16:23.265Z","age":52},"registered":{"date":"2013-03-15T11:26:37.873Z","age":9},"phone":"(774) 214-3506","cell":"(550) 936-2913","id":{"name":"SSN","value":"749-62-6267"},"picture":{"large":"https://randomuser.me/api/portraits/men/83.jpg","medium":"https://randomuser.me/api/portraits/med/men/83.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/men/83.jpg"},"nat":"US"},]);
+  const [data, setData] = useState([{"gender":"male","name":{"title":"Mr","first":"Mason","last":"Walker"},"location":{"street":{"number":7436,"name":"Woodland St"},"city":"Los Lunas","state":"South Carolina","country":"United States","postcode":28568,"coordinates":{"latitude":"16.1075","longitude":"-111.5074"},"timezone":{"offset":"+11:00","description":"Magadan, Solomon Islands, New Caledonia"}},"email":"mason.walker@example.com","login":{"uuid":"aefbf8c3-279a-4998-81ff-278dbb702758","username":"yellowzebra256","password":"aaron","salt":"lDJNMMIa","md5":"825b151513e0a1b4784e34fdb34be515","sha1":"85305bc0e9574b4f454d2501c8a9fba54967404d","sha256":"b41a7aa58b9327a7fba1c8569c169f9ffbbb9dedf549609ed5c7570efbb33502"},"dob":{"date":"1970-04-11T07:16:23.265Z","age":52},"registered":{"date":"2013-03-15T11:26:37.873Z","age":9},"phone":"(774) 214-3506","cell":"(550) 936-2913","id":{"name":"SSN","value":"749-62-6267"},"picture":{"large":"https://randomuser.me/api/portraits/men/83.jpg","medium":"https://randomuser.me/api/portraits/med/men/83.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/men/83.jpg"},"nat":"US"},{"gender":"male","name":{"title":"Mr","first":"Mason","last":"Walker"},"location":{"street":{"number":7436,"name":"Woodland St"},"city":"Los Lunas","state":"South Carolina","country":"United States","postcode":28568,"coordinates":{"latitude":"16.1075","longitude":"-111.5074"},"timezone":{"offset":"+11:00","description":"Magadan, Solomon Islands, New Caledonia"}},"email":"mason.walker@example.com","login":{"uuid":"aefbf8c3-279a-4998-81ff-278dbb702758","username":"yellowzebra256","password":"aaron","salt":"lDJNMMIa","md5":"825b151513e0a1b4784e34fdb34be515","sha1":"85305bc0e9574b4f454d2501c8a9fba54967404d","sha256":"b41a7aa58b9327a7fba1c8569c169f9ffbbb9dedf549609ed5c7570efbb33502"},"dob":{"date":"1970-04-11T07:16:23.265Z","age":52},"registered":{"date":"2013-03-15T11:26:37.873Z","age":9},"phone":"(774) 214-3506","cell":"(550) 936-2913","id":{"name":"SSN","value":"749-62-6267"},"picture":{"large":"https://randomuser.me/api/portraits/men/83.jpg","medium":"https://randomuser.me/api/portraits/med/men/83.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/men/83.jpg"},"nat":"US"}]);
   const [searchData, setSearchData] = useState();
   const [searchWasMade, setSearchWasMade] = useState(false);
 
@@ -17,7 +17,7 @@ function Search1() {
     fetch(endpoint)
       .then(response => response.json())
       .then(json => {
-        setData(JSON.stringify(json.results));
+        setData(json.results);
 
       });
     console.log("state data: "+JSON.stringify(data));
@@ -49,8 +49,8 @@ function Search1() {
     // this.search(e.target[0].value,this.state.data);
   }
   
-
   return (
+    
     <div>
       <p>You clicked {count} times</p>
       <button onClick={() => setCount(count + 1)}>
@@ -87,9 +87,42 @@ function Search1() {
         <div >
           <ul>
             {console.log("UL LI.........")}
-            {searchWasMade? <div>True</div>: <div>Search for a username....</div>}
+            {console.log("UL - - state data: "+JSON.stringify(data))}
+            {
+            searchWasMade? 
+            data.map(data1 => (
+            <li key={data1.id.value} style={{padding:"1em"}}>
+              <div key={data1.id.value}>
+
+                <div style={{  alignItems: "center",display:"flex", borderRadius:"10px", border:"1px solid black",justifyContent: "space-between"}}>
+                  <div >
+                    <img
+                      src={data1.picture.large}
+                       height="50%"
+                      alt="profile"
+                      style={{borderRadius:"10px"}}
+                    />
+                  </div>
+                  <h5 >
+                    {data1.name.first +
+                      " " +
+                      data1.name.last}
+                  </h5>
+                  <p >
+                    {data1.location.city +
+                      ", " +
+                      data1.location.state}
+                    <br />
+                    <span >{data1.phone}</span>
+                  </p>
+                </div>
+
+            </div>
+            </li>)): <div>Search for a username....</div>}
           {
             
+
+
           /* {this.data.map(data => (
             <li key={data.id.value} style={{padding:"1em"}}>
               <div key={data.id.value}>
