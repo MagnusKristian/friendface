@@ -13,7 +13,7 @@ export const searchFirstName = (searchWord,data)=>{
   let match;
   let matchName = "x";
   let matchFound = false;
-  let allMatches = data;
+  let allMatches = [];
   data.forEach(element => {
     if(element.name.first.toLowerCase() == searchWord.toLowerCase()){
       console.log("SUCCESS.");
@@ -28,11 +28,11 @@ export const searchFirstName = (searchWord,data)=>{
   console.log("All matches: "+JSON.stringify(allMatches));
   if(matchFound){
   console.log(`Match found for "${searchWord}": "${JSON.stringify(match)}"`);
+  return (allMatches);
   }
   else{
   console.log(`No match found for "${searchWord}"...`);
-
+  return (data); //TODO: fix this so it doesnt return all results if not found.
   }
 
-  return (allMatches)
  }

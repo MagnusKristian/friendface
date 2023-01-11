@@ -14,7 +14,7 @@ function Search1() {
   const loadData = () => {
     console.log("loading data");
     // const { alldata } = this.data;
-    const endpoint = `https://randomuser.me/api/?nat=us&results=${100}&page=${1}`;
+    const endpoint = `https://randomuser.me/api/?nat=us&results=${200}&page=${1}`;
     fetch(endpoint)
       .then(response => response.json())
       .then(json => {
