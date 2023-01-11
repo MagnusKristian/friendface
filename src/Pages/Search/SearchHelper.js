@@ -5,7 +5,7 @@ export const searchFirstName = (searchWord,data)=>{
   console.log(`Searched for first name ${searchWord}`);
   // console.log(` ${x}`);
 
-  filterNames(searchWord,data);
+  return filterNames(searchWord,data);
  }
 
 
@@ -13,7 +13,7 @@ export const searchFirstName = (searchWord,data)=>{
   let match;
   let matchName = "x";
   let matchFound = false;
-  let allMatches = [];
+  let allMatches = data;
   data.forEach(element => {
     if(element.name.first.toLowerCase() == searchWord.toLowerCase()){
       console.log("SUCCESS.");
@@ -21,6 +21,7 @@ export const searchFirstName = (searchWord,data)=>{
       matchName = element.name.first +" "+ element.name.last;
       matchFound = true;
       allMatches.push(element);
+      console.log(element);
       console.log(matchName);
     }
   });
@@ -32,4 +33,6 @@ export const searchFirstName = (searchWord,data)=>{
   console.log(`No match found for "${searchWord}"...`);
 
   }
+
+  return (allMatches)
  }
