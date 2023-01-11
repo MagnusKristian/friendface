@@ -20,6 +20,7 @@ import { useState } from "react";
 
 import './App.css';
 import PostFeedPage from "./Pages/PostFeedPage/PostFeedPage";
+import Search1 from "./Pages/Search/Search1";
 
 // import { Login } from './Components/login/login.js';
 // import {NavBar } from "./Components/NavBar/NavBar"
@@ -69,7 +70,8 @@ function App() {
              {/* Dont change the three above*/ }
              <Route path="login" element={<Login />} />
              <Route path="profile" element={<Profile />} />
-             <Route path="search" element={<Search />} />
+             {/* <Route path="search" element={<Search />} /> */}
+             <Route path="search" element={<Search1 />} />
              <Route path="settings" element={<Settings />} />
              <Route path="extra" element={<Extra />} />
              <Route path="postfeedpage" element={<PostFeedPage />} />
