@@ -8,14 +8,14 @@ import "./Search1css.css";
 
 function Search1() {
   const [count, setCount] = useState(0);
-  const [data, setData] = useState([{"gender":"male","name":{"title":"Mr","first":"FIRSTNAME","last":"TEMPORARY LASTNAME"},"location":{"street":{"number":7436,"name":"Woodland St"},"city":"CITY","state":"STATE","country":"United States","postcode":28568,"coordinates":{"latitude":"16.1075","longitude":"-111.5074"},"timezone":{"offset":"+11:00","description":"Magadan, Solomon Islands, New Caledonia"}},"email":"mason.walker@example.com","login":{"uuid":"aefbf8c3-279a-4998-81ff-278dbb702758","username":"yellowzebra256","password":"aaron","salt":"lDJNMMIa","md5":"825b151513e0a1b4784e34fdb34be515","sha1":"85305bc0e9574b4f454d2501c8a9fba54967404d","sha256":"b41a7aa58b9327a7fba1c8569c169f9ffbbb9dedf549609ed5c7570efbb33502"},"dob":{"date":"1970-04-11T07:16:23.265Z","age":52},"registered":{"date":"2013-03-15T11:26:37.873Z","age":9},"phone":"(774) 214-3506","cell":"(550) 936-2913","id":{"name":"SSN","value":"749-62-6267"},"picture":{"large":"https://randomuser.me/api/portraits/men/83.jpg","medium":"https://randomuser.me/api/portraits/med/men/83.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/men/83.jpg"},"nat":"US"},]);
-  const [searchData, setSearchData] = useState([{"gender":"male","name":{"title":"Mr","first":"FIRSTNAME","last":"TEMPORARY LASTNAME"},"location":{"street":{"number":7436,"name":"Woodland St"},"city":"CITY","state":"STATE","country":"United States","postcode":28568,"coordinates":{"latitude":"16.1075","longitude":"-111.5074"},"timezone":{"offset":"+11:00","description":"Magadan, Solomon Islands, New Caledonia"}},"email":"mason.walker@example.com","login":{"uuid":"aefbf8c3-279a-4998-81ff-278dbb702758","username":"yellowzebra256","password":"aaron","salt":"lDJNMMIa","md5":"825b151513e0a1b4784e34fdb34be515","sha1":"85305bc0e9574b4f454d2501c8a9fba54967404d","sha256":"b41a7aa58b9327a7fba1c8569c169f9ffbbb9dedf549609ed5c7570efbb33502"},"dob":{"date":"1970-04-11T07:16:23.265Z","age":52},"registered":{"date":"2013-03-15T11:26:37.873Z","age":9},"phone":"(774) 214-3506","cell":"(550) 936-2913","id":{"name":"SSN","value":"749-62-6267"},"picture":{"large":"https://randomuser.me/api/portraits/men/83.jpg","medium":"https://randomuser.me/api/portraits/med/men/83.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/men/83.jpg"},"nat":"US"},]);
+  const [data, setData] = useState();
+  const [searchData, setSearchData] = useState();
   const [searchWasMade, setSearchWasMade] = useState(false); //set default to false
   const [showSearch, setShowSearch] = useState(false); //set default to false
 
 
   const loadData = () => {
-    console.log("loading data");
+    console.log("loading data...");
     // const { alldata } = this.data;
     const endpoint = `https://randomuser.me/api/?nat=us&results=${200}&page=${1}`; 
     fetch(endpoint)
@@ -133,11 +133,13 @@ function Search1() {
              showSearch && <div>Match found!</div>
             }
             {
-             !showSearch && <div>No match found!</div>
+             !showSearch && searchWasMade && <div>No match found!</div>
             }
-            
             {
-            searchWasMade && showSearch? 
+              !showSearch && !searchWasMade && <div>Search for a username....</div>
+            }
+            {
+            searchWasMade && showSearch &&
             searchData.map(data1 => (
             <li key={data1.id.value} style={{padding:"1em"}}>
               <div key={data1.id.value}>
@@ -164,9 +166,9 @@ function Search1() {
                     <span >{data1.phone}</span>
                   </p>
                 </div>
-
             </div>
-            </li>)): <div>Search for a username....</div>}
+            </li>))
+            }
           {
             
 
