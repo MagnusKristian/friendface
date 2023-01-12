@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { searchFirstName } from "./SearchHelper";
 import { useEffect } from "react";
 import { useState} from 'react';
+import "./Search1css.css";
 
 // import { searchFirstName } from "./SearchHelper";
 
@@ -9,18 +10,20 @@ function Search1() {
   const [count, setCount] = useState(0);
   const [data, setData] = useState([{"gender":"male","name":{"title":"Mr","first":"FIRSTNAME","last":"TEMPORARY LASTNAME"},"location":{"street":{"number":7436,"name":"Woodland St"},"city":"CITY","state":"STATE","country":"United States","postcode":28568,"coordinates":{"latitude":"16.1075","longitude":"-111.5074"},"timezone":{"offset":"+11:00","description":"Magadan, Solomon Islands, New Caledonia"}},"email":"mason.walker@example.com","login":{"uuid":"aefbf8c3-279a-4998-81ff-278dbb702758","username":"yellowzebra256","password":"aaron","salt":"lDJNMMIa","md5":"825b151513e0a1b4784e34fdb34be515","sha1":"85305bc0e9574b4f454d2501c8a9fba54967404d","sha256":"b41a7aa58b9327a7fba1c8569c169f9ffbbb9dedf549609ed5c7570efbb33502"},"dob":{"date":"1970-04-11T07:16:23.265Z","age":52},"registered":{"date":"2013-03-15T11:26:37.873Z","age":9},"phone":"(774) 214-3506","cell":"(550) 936-2913","id":{"name":"SSN","value":"749-62-6267"},"picture":{"large":"https://randomuser.me/api/portraits/men/83.jpg","medium":"https://randomuser.me/api/portraits/med/men/83.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/men/83.jpg"},"nat":"US"},]);
   const [searchData, setSearchData] = useState([{"gender":"male","name":{"title":"Mr","first":"FIRSTNAME","last":"TEMPORARY LASTNAME"},"location":{"street":{"number":7436,"name":"Woodland St"},"city":"CITY","state":"STATE","country":"United States","postcode":28568,"coordinates":{"latitude":"16.1075","longitude":"-111.5074"},"timezone":{"offset":"+11:00","description":"Magadan, Solomon Islands, New Caledonia"}},"email":"mason.walker@example.com","login":{"uuid":"aefbf8c3-279a-4998-81ff-278dbb702758","username":"yellowzebra256","password":"aaron","salt":"lDJNMMIa","md5":"825b151513e0a1b4784e34fdb34be515","sha1":"85305bc0e9574b4f454d2501c8a9fba54967404d","sha256":"b41a7aa58b9327a7fba1c8569c169f9ffbbb9dedf549609ed5c7570efbb33502"},"dob":{"date":"1970-04-11T07:16:23.265Z","age":52},"registered":{"date":"2013-03-15T11:26:37.873Z","age":9},"phone":"(774) 214-3506","cell":"(550) 936-2913","id":{"name":"SSN","value":"749-62-6267"},"picture":{"large":"https://randomuser.me/api/portraits/men/83.jpg","medium":"https://randomuser.me/api/portraits/med/men/83.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/men/83.jpg"},"nat":"US"},]);
-  const [searchWasMade, setSearchWasMade] = useState(false);
+  const [searchWasMade, setSearchWasMade] = useState(false); //set default to false
+  const [showSearch, setShowSearch] = useState(false); //set default to false
+
 
   const loadData = () => {
     console.log("loading data");
     // const { alldata } = this.data;
-    const endpoint = `https://randomuser.me/api/?nat=us&results=${200}&page=${1}`;
+    const endpoint = `https://randomuser.me/api/?nat=us&results=${200}&page=${1}`; 
     fetch(endpoint)
       .then(response => response.json())
       .then(json => {
         setData(json.results);
-        setSearchData(json.results);
-        console.log("searchdata set temporary to same as data");
+        // setSearchData(json.results);
+        // console.log("searchdata set temporary to same as data");
         
 
       });
@@ -49,6 +52,13 @@ function Search1() {
   const handleSubmit = (e) => { 
     console.log("handlesubmit clicked");
     e.preventDefault();
+
+    if(e.target[0].value.length < 1){
+      console.log("come on now, you gotta search for something. ");
+      alert('You searched for: "NOTHING"');
+      return;
+    }
+
     alert('You searched for: ' + e.target[0].value);
     // console.log(e.target[0].value);
     // console.log(e.target.SearchInput.value+"...");
@@ -56,12 +66,26 @@ function Search1() {
     // console.log("---Searchword? = "+`${e.target[0].value}`+"---");
     // this.search(e.target[0].value,this.state.data);
     search(e.target[0].value,data);
+    setSearchWasMade(true);
   };
 
   const search = (searchWord,dataBeingSearched)=> {
     let results = searchFirstName(searchWord,dataBeingSearched);
 
+    // console.log(searchWord);
+
+    if(results[0].name.first == "FIRSTNAME"){
+      console.log("could not find match for :'"+searchWord+"'.");
+      setShowSearch(false);
+      return;
+      // sett også siden til å rendre noe annet.
+    }
+    
     setSearchData(results);
+    setShowSearch(true);
+    console.log("results for results: ");
+    console.log("results for results: ");
+    console.log("results for results: ");
     console.log("results for results: ");
     console.log(JSON.stringify(results));
     console.log("results was set to searchdata.");
@@ -101,12 +125,19 @@ function Search1() {
             console.log("false btn clicked");
             setSearchWasMade(false);
           }}>false</button>
-        <div >
+        <div className="searchResultContainer">
           <ul>
-            {console.log("UL LI.........")}
-            {console.log("UL - - state data: "+JSON.stringify(data))}
+            {/* {console.log("UL LI.........")} */}
+            {/* {console.log("UL - - state data: "+JSON.stringify(data))} */}
             {
-            searchWasMade? 
+             showSearch && <div>Match found!</div>
+            }
+            {
+             !showSearch && <div>No match found!</div>
+            }
+            
+            {
+            searchWasMade && showSearch? 
             searchData.map(data1 => (
             <li key={data1.id.value} style={{padding:"1em"}}>
               <div key={data1.id.value}>
