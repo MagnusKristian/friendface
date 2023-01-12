@@ -1,0 +1,37 @@
+{
+  "users": [
+    {
+      "id":"1234",
+      "userName":"USERNAME",
+      "password":"PASSWORD",
+      "name":"NAME",
+      "FirstName":"FirstName",
+      "LastName":"LastName",
+      "ImageURL":"ImageURL",
+      "email":"email",
+      "description":"description",
+      "status":"status",
+      "currentlyPendingFriendRequests":"false",
+      "Friends":[{},{}],
+      "PendingFriendRequests":[{},{}],
+      "SentPendingFriendRequests":[{},{}]
+    },{
+      "id":"1234",
+      "userName":"USERNAME",
+      "password":"PASSWORD",
+      "name":"NAME",
+      "FirstName":"FirstName",
+      "LastName":"LastName",
+      "ImageURL":"ImageURL",
+      "email":"email",
+      "description":"description",
+      "status":"status",
+      "currentlyPendingFriendRequests":"false",
+      "Friends":[{},{}],
+      "PendingFriendRequests":[{},{}],
+      "SentPendingFriendRequests":[{},{}]
+    }
+  ],
+  "postFeed":[{}]
+}
+

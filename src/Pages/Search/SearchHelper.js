@@ -4,27 +4,57 @@ export const searchFirstName = (searchWord,data)=>{
 
   console.log(`Searched for first name ${searchWord}`);
   // console.log(` ${x}`);
+  let firstName = "first";
+  return filterNames(searchWord,data,firstName);
+ }
 
-  return filterNames(searchWord,data);
+ export const searchLastName = (searchWord,data)=>{
+  // console.log(`Here is the data:  ${JSON.stringify(data)}`);
+  // console.log(`Here is the data:  ${data}`);
+
+  console.log(`Searched for first name ${searchWord}`);
+  // console.log(` ${x}`);
+
+  return filterNames(searchWord,data,"last");
  }
 
 
- const filterNames = (searchWord,data)=>{
+ const filterNames = (searchWord,data,nametype)=>{
   let match;
   let matchName = "x";
+  let matchName1 = "x";
   let matchFound = false;
   let allMatches = [];
-  data.forEach(element => {
-    if(element.name.first.toLowerCase() == searchWord.toLowerCase()){
+  let nameType = nametype;
+  let searchWordLower = searchWord.toLowerCase();
+  // data.forEach(element => {
+  //   if(element.name.first.toLowerCase() == searchWord.toLowerCase()){
+  //     console.log("SUCCESS.");
+  //     match = element;
+  //     matchName = element.name.first +" "+ element.name.last;
+  //     matchFound = true;
+  //     allMatches.push(element);
+  //     console.log(element);
+  //     console.log(matchName);
+  //   }
+  // });
+
+  // let ContainsSearchWord = text.includes("world");
+  data.forEach((element) => {
+    // console.log("TYPE OF NAME: "+nameType)
+    // let nameInLower = element.name.nameType;
+    let firstOrLast = "first";
+    if(element.name.first.includes(searchWordLower)){
       console.log("SUCCESS.");
       match = element;
-      matchName = element.name.first +" "+ element.name.last;
+      matchName = element.name.firstOrLast +" "+ element.name.firstOrLast;
       matchFound = true;
       allMatches.push(element);
       console.log(element);
       console.log(matchName);
     }
   });
+
   // console.log("All matches: "+JSON.stringify(allMatches));
   if(matchFound){
   console.log(`Match found for "${searchWord}": "${JSON.stringify(match)}"`);
